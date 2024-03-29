@@ -1,6 +1,6 @@
 {
 	"name": "eslint-config-kiprasmel",
-	"version": "0.3.3",
+	"version": "0.3.4",
 	"description": "ESLint, Prettier and TypeScript setup from Kipras",
 	"main": "index.js",
 	"author": "Kipras Melnikovas <kipras@kipras.org> (https://kipras.org)",
@@ -12,7 +12,7 @@
 		"lint:fix": "eslint . --ext js,jsx,ts,tsx --ignore-pattern '!.eslintrc.js' --fix",
 		"prepublishOnly": "yarn lint:fix",
 		"postpublish": "   yarn updateGlobal",
-		"printDeps": "node -p -e \"Object.entries(require('./package.json').devDependencies).reduce((accumulator, [key, value]) => accumulator + ' ' + '\\\"' + key + '@' + value + '\\\"', '')\"",
+		"printDeps": "node -p -e \"Object.entries(require('./package.json').dependencies).reduce((accumulator, [key, value]) => accumulator + ' ' + '\\\"' + key + '@' + value + '\\\"', '')\"",
 		"update": "      yarn        add $(yarn -s printDeps)",
 		"updateGlobal": "yarn global add $(yarn -s printDeps)",
 		"send-it": "yarn version --patch && npm whoami && npm publish"
