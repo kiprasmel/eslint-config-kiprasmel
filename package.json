@@ -1,10 +1,10 @@
 {
-	"name": "eslint-config-sarpik",
-	"version": "0.3.2",
+	"name": "eslint-config-kiprasmel",
+	"version": "0.3.3",
 	"description": "ESLint, Prettier and TypeScript setup from Kipras",
 	"main": "index.js",
 	"author": "Kipras Melnikovas <kipras@kipras.org> (https://kipras.org)",
-	"repository": "https://github.com/sarpik/eslint-config-sarpik",
+	"repository": "https://github.com/kiprasmel/eslint-config-kiprasmel",
 	"license": "MIT",
 	"private": false,
 	"scripts": {
@@ -49,6 +49,6 @@
 		"lint",
 		"config",
 		"prettier",
-		"sarpik"
+		"kiprasmel"
 	]
 }

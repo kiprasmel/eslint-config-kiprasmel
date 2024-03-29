@@ -22,13 +22,13 @@ I also install globally so that any project or rogue JS file I write will have l
 
 ## Staying up-to-date
 
-You can [watch the repo (releases only) on github](https://github.com/sarpik/eslint-config-sarpik/watchers) to get notified once I release a new version! 🚀
+You can [watch the repo (releases only) on github](https://github.com/kiprasmel/eslint-config-kiprasmel/watchers) to get notified once I release a new version! 🚀
 
 ## Local / Per project install
 
 ```sh
 yarn init -y                                            # Create 'package.json' if you haven't already
-npx install-peerdeps --dev eslint-config-sarpik --yarn  # Install everything needed by the config
+npx install-peerdeps --dev eslint-config-kiprasmel --yarn  # Install everything needed by the config
                                                         # You can see in your package.json there's now a big list of devDependencies
 touch .eslintrc.js                                      # Create the config file @ the project's root
 ```
@@ -38,7 +38,7 @@ Your `.eslintrc.js` file should look like this:
 ```js
 module.exports = {
   "extends": [
-    "sarpik"
+    "kiprasmel"
   ],
   "ignorePatterns": [
     "node_modules",
@@ -67,7 +67,7 @@ Now you can manually lint your code by running `yarn lint` (`npm run lint`) and 
 1. First install everything needed:
 
 ```
-npx install-peerdeps --global eslint-config-sarpik --yarn
+npx install-peerdeps --global eslint-config-kiprasmel --yarn
 ```
 
 (**note:** npx is not a spelling mistake of **npm**. `npx` comes with when `node` and `npm` are installed and makes script running easier 😃 (and it works automatically with yarn, too!))
@@ -84,7 +84,7 @@ Your `.eslintrc.js` file should look like this:
 ```js
 module.exports = {
   "extends": [
-    "sarpik"
+    "kiprasmel"
   ],
   "ignorePatterns": [
     "node_modules",
@@ -104,7 +104,7 @@ If you'd like to overwrite eslint or prettier settings, you can add the rules in
 ```js
 module.exports = {
   "extends": [
-    "eslint-config-sarpik",
+    "eslint-config-kiprasmel",
   ],
   "ignorePatterns": [
     "node_modules",
@@ -196,9 +196,9 @@ See also [the README of vscode-eslint](https://github.com/microsoft/vscode-eslin
 Run this:
 
 ```sh
-npx install-peerdeps eslint-config-sarpik --dev --yarn
+npx install-peerdeps eslint-config-kiprasmel --dev --yarn
 
-sed 's/"react-app"/"eslint-config-sarpik"/g' package.json -i
+sed 's/"react-app"/"eslint-config-kiprasmel"/g' package.json -i
 sed 's/"eslint": "5.x"/"eslint": "7.x"/g'    package.json -i
 
 yarn install
@@ -227,7 +227,7 @@ Your `package.json` should have this:
 	},
 	"eslintConfig": {
 		"extends": [
-		  "eslint-config-sarpik"
+		  "eslint-config-kiprasmel"
 		],
 		"ignorePatterns": [
 		  "node_modules",
@@ -250,14 +250,14 @@ Your `package.json` should have this:
 }
 ```
 
-Example repo with commits as setting up steps: https://github.com/sarpik/cra-eslint-ts
+Example repo with commits as setting up steps: https://github.com/kiprasmel/cra-eslint-ts
 
 ## 🤬🤬🤬🤬 IT'S NOT WORKING
 
 Start fresh. Sometimes global modules can goof you up. This will remove them all:
 
 ```
-yarn global remove eslint-config-sarpik @typescript-eslint/parser @typescript-eslint/eslint-plugin typescript eslint eslint-config-prettier eslint-config-airbnb eslint-plugin-html eslint-plugin-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react prettier eslint-plugin-react-hooks
+yarn global remove eslint-config-kiprasmel @typescript-eslint/parser @typescript-eslint/eslint-plugin typescript eslint eslint-config-prettier eslint-config-airbnb eslint-plugin-html eslint-plugin-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react prettier eslint-plugin-react-hooks
 ```
 
 To do the above for local, omit the `--global` flag.
@@ -274,4 +274,4 @@ Then follow the above instructions again.
 
 ## License
 
-[MIT](./LICENSE) © 2019 [Kipras Melnikovas](https://github.com/sarpik)
+[MIT](./LICENSE) © 2019 [Kipras Melnikovas](https://github.com/kiprasmel)
