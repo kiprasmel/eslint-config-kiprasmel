@@ -227,6 +227,11 @@
   resolved "https://registry.yarnpkg.com/@pkgr/core/-/core-0.1.1.tgz#1ec17e2edbec25c8306d424ecfbf13c7de1aaa31"
   integrity sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==
 
+"@rushstack/eslint-patch@1.10.1":
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.10.1.tgz#7ca168b6937818e9a74b47ac4e2112b2e1a024cf"
+  integrity sha512-S3Kq8e7LqxkA9s7HKLqXGTGck1uwis5vAXan3FnU5yw1Ec5hsSGnq4s/UCaSqABPOnOTg7zASLyst7+ohgWexg==
+
 "@types/json-schema@^7.0.12":
   version "7.0.15"
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"

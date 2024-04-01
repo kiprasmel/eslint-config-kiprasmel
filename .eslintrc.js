@@ -1,16 +1,12 @@
-#!/usr/bin/env node
 // .eslintrc.js
 
 /**
  * The ESLint + Prettier config from Kipras <kipras@kipras.org> (https://kipras.org)
- *
- * Supports TypeScript!
- * (
- *   https://javascriptplayground.com/typescript-eslint/
- * & https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
- * )
- *
  */
+
+// This is a patch so that eslint will load the plugins as dependencies.
+// Otherwise we can to install EVERYTHING in th root project
+require('@rushstack/eslint-patch/modern-module-resolution');
 
 module.exports = {
 	extends: [
