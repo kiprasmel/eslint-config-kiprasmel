@@ -75,7 +75,7 @@ module.exports = {
 		"eslint-disable lines-between-class-members": 0,
 		"no-nested-ternary": 0,
 		"no-return-await": 0,
-
+		"prefer-template": 0,
 		"no-whitespace-before-property": 1,
 
 		/** end disable meh stuff */
