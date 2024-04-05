@@ -53,6 +53,7 @@ module.exports = {
 		"@typescript-eslint/no-explicit-any": 1,
 		"@typescript-eslint/no-angle-bracket-type-assertion": 0, // is way more useful at times
 		"@typescript-eslint/no-var-requires": 0,
+		"@typescript-eslint/no-non-null-assertion": 0, // sometimes useful escape hatch
 
 		/** end typescript-specific */
 
