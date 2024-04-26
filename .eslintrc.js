@@ -16,7 +16,6 @@ module.exports = {
 	extends: [
 		"airbnb",
 		"eslint:recommended",
-		"plugin:flowtype/recommended",
 		"plugin:import/typescript" /** https://github.com/benmosher/eslint-plugin-import#typescript */,
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
