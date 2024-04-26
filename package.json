@@ -1,6 +1,6 @@
 {
 	"name": "eslint-config-kiprasmel",
-	"version": "0.3.4",
+	"version": "0.3.5",
 	"description": "ESLint, Prettier and TypeScript setup from Kipras",
 	"main": "index.js",
 	"author": "Kipras Melnikovas <kipras@kipras.org> (https://kipras.org)",
@@ -23,8 +23,8 @@
 		"typescript": "^4.8.4 || ^5.0.0"
 	},
 	"dependencies": {
-		"@typescript-eslint/eslint-plugin": "7.4.0",
-		"@typescript-eslint/parser": "7.4.0",
+		"@typescript-eslint/eslint-plugin": "6.21.0",
+		"@typescript-eslint/parser": "6.21.0",
 		"babel-eslint": "10.1.0",
 		"eslint": "8.57.0",
 		"eslint-config-airbnb": "19.0.4",
