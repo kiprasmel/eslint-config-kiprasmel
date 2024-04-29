@@ -77,6 +77,7 @@ module.exports = {
 		"no-return-await": 0,
 		"prefer-template": 0,
 		"no-whitespace-before-property": 1,
+		"no-empty-pattern": 0,
 
 		/** end disable meh stuff */
 
