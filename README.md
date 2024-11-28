@@ -6,124 +6,93 @@ You might like them - or you might not. Don't worry you can always change them.
 
 ## What it does
 
-* Lints JavaScript based on the latest standards
-* Fixes issues and formatting errors with Prettier
-* Lints + Fixes inside of html script tags
-* Lints + Fixes React via eslint-config-airbnb
-* You can see all the [rules here](./.eslintrc.js). You are very welcome to overwrite any of these settings, or just fork the entire thing to create your own.
+- Lints JavaScript and TypeScript based on the latest standards
+- Fixes issues and formatting errors with Prettier
+- Lints + Fixes inside of html script tags
+- Lints + Fixes React via eslint-config-airbnb
+- You can see all the [rules here](./.eslintrc.js). You are very welcome to overwrite any of these settings, or just fork the entire thing to create your own.
 
-## Installing
+## Project Install
 
-You can use eslint globally and/or locally per project.
+It's recommended you install this once per every project. ESLint used to have global configs, but no longer.
 
-It's usually best to install this locally once per project, that way you can have project specific settings as well as sync those settings with others working on your project via git.
+1. If you don't already have a `package.json` file, create one with `yarn init -y`.
 
-I also install globally so that any project or rogue JS file I write will have linting and formatting applied without having to go through the setup. You might disagree and that is okay, just don't do it then 😃.
+2. Then we need to install this config
 
-## Staying up-to-date
-
-You can [watch the repo (releases only) on github](https://github.com/kiprasmel/eslint-config-kiprasmel/watchers) to get notified once I release a new version! 🚀
-
-## Local / Per project install
-
-```sh
-yarn init -y                                            # Create 'package.json' if you haven't already
-npx install-peerdeps --dev eslint-config-kiprasmel --yarn  # Install everything needed by the config
-                                                        # You can see in your package.json there's now a big list of devDependencies
-touch .eslintrc.js                                      # Create the config file @ the project's root
+```
+npm install eslint-config-kiprasmel
 ```
 
-Your `.eslintrc.js` file should look like this:
+4. We need to put our eslint settings in a file in the root of your project. I prefer to use our existing `package.json`, and add an `eslintConfig` property. You can also create a new `.eslintrc` or `.eslintrc.js` file that lives where package.json does:
 
-```js
-module.exports = {
-  "extends": [
-    "kiprasmel"
-  ],
-  "ignorePatterns": [
-    "node_modules",
-	"dist",
-	"build",
-  ],
-  "rules": {},
+**in package.json**, add this anywhere top level. Like right under your "scripts" object.
+
+```json
+"eslintConfig": {
+	"extends": ["kiprasmel"]
 }
 ```
 
-> Tip: You can alternatively put this object in your `package.json` under the property `"eslintConfig": { ... }`. This makes one less file in your project.
+Or put this in a `.eslintrc` file
 
-You can add these two scripts to your package.json to lint and/or fix:
+```json
+{
+	"extends": ["kiprasmel"]
+}
+```
+
+TypeScript users will also need a `tsconfig.json` file in their project.
+
+5. You can add two scripts to your package.json to lint and/or fix:
 
 ```json
 "scripts": {
-  "lint": "eslint .",
-  "lint:fix": "eslint . --fix"
+	"lint": "eslint .",
+	"lint:fix": "eslint . --fix"
 },
 ```
 
-Now you can manually lint your code by running `yarn lint` (`npm run lint`) and fix all fixable issues with `yarn lint:fix` (`npm run lint:fix`). You probably want your editor to do this though.
-
-## Global Install
-
-1. First install everything needed:
-
-```
-npx install-peerdeps --global eslint-config-kiprasmel --yarn
-```
-
-(**note:** npx is not a spelling mistake of **npm**. `npx` comes with when `node` and `npm` are installed and makes script running easier 😃 (and it works automatically with yarn, too!))
-
-2. Then you need to make a global `.eslintrc.js` / `.eslintrc` file:
-
-ESLint will look for one in your home directory
-
-* `~/.eslintrc[.js]` for UNIX
-* `C:\Users\<username>\.eslintrc[.js]` for Windows
-
-Your `.eslintrc.js` file should look like this:
-
-```js
-module.exports = {
-  "extends": [
-    "kiprasmel"
-  ],
-  "ignorePatterns": [
-    "node_modules",
-	"dist",
-	"build",
-  ],
-  "rules": {},
-}
-```
-
-3. To use from the CLI, you can now run `eslint .` or configure your editor as we show next.
+6. Now you can manually lint your code by running `yarn lint` and fix all fixable issues with `yarn lint:fix`. You probably want your editor to do this though.
 
 ## Settings
 
-If you'd like to overwrite eslint or prettier settings, you can add the rules in your `.eslintrc[.js]` file. The [ESLint rules](https://eslint.org/docs/rules/) go directly under `"rules"` while [prettier options](https://prettier.io/docs/en/options.html) go under `"prettier/prettier"`. Note that prettier rules overwrite anything in my config (trailing comma, and single quote), so you'll need to include those as well.
+If you'd like to overwrite eslint or prettier settings, you can add the rules in your `.eslintrc` file. The [ESLint rules](https://eslint.org/docs/rules/) go directly under `"rules"`.
 
 ```js
-module.exports = {
-  "extends": [
-    "eslint-config-kiprasmel",
-  ],
-  "ignorePatterns": [
-    "node_modules",
-	"dist",
-	"build",
-  ],
-  "rules": {
-    "no-console": 2,
-    "prettier/prettier": [
-      "error",
-      {
-        "trailingComma": "es5",
-        "singleQuote": false,
-        "printWidth": 120,
-        "tabWidth": 4,
-      }
-    ],
-  },
+{
+	"extends": [
+		"kiprasmel"
+	],
+	"rules": {}
 }
+```
+
+### Prettier Rules
+
+You can put this in your ESLint config as a rule like so:
+
+```json
+{
+	"extends": ["kiprasmel"],
+	"rules": {
+		... any eslint rules here
+		"prettier/prettier": [
+			"error",
+			{
+				"singleQuote": true,
+				"endOfLine": "auto",
+				"tabWidth": 4
+			},
+		],
+	}
+}
+```
+
+Note if you are switching to double quotes, you'll also need to add this eslint rule, or they will fight to the death!
+
+```js
+quotes: ["error", "double"];
 ```
 
 ## With VS Code
@@ -133,145 +102,120 @@ You should read this entire thing. Serious!
 Once you have done one, or both, of the above installs. You probably want your editor to lint and fix for you. Here are the instructions for VS Code:
 
 1. Install the [ESLint package](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+2. Now we need to setup some VS Code settings via `Code/File` → `Preferences` → `Settings`. It's easier to enter these settings while editing the `settings.json` file, so click the Open (Open Settings) icon in the top right corner:
 
-2. Now we need to setup some VS Code settings via `Code/File` → `Preferences` → `Settings`. It's easier to enter these settings while editing the `settings.json` file, so click the `{}` icon in the top right corner:
+```js
+"editor.formatOnSave": true,
+// turn it off for JS and JSX, we will do this via eslint
+"[javascript][javascriptreact][typescript][typescriptreact]": {
+	"editor.formatOnSave": false
+},
+// tell the ESLint plugin to run on save
+"editor.codeActionsOnSave": {
+	"source.fixAll.eslint": true
+},
+```
 
 ```json
 {
-  "editor.formatOnSave": true,
+	"editor.formatOnSave": true,
 
-  /** disable tslint - no need! */
-  "tslint.enable": false,
+	"eslint.enable": true,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": "explicit",
+		"source.fixAll.eslint": "always"
+	},
 
-  "eslint.enable": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    // "source.fixAll.eslint": true /** included by previous setting */
-  },
+	"eslint.run": "onSave",
+	"eslint.format.enable": true,
 
-  // "eslint.run": "onSave",
-  "eslint.run": "onType",
-  /** work as a formatter, too! */
-  "eslint.format.enable": true,
+	"[javascript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
 
-  /**
-   * ~~turn formatting off for JS, JSX, TS & TSX - we do this via eslint~~
-   * ESLint IS the formatter now!
-   * (Prettier is still in the picture, as we have configured it via eslint)
-  */
-  "[javascript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-  },
-
-  /**
-   * Optional but IMPORTANT:
-   * If you have the prettier extension enabled for other languages like CSS and HTML,
-   * turn it off for JS since we are doing it through eslint already
-  */
-  "prettier.disableLanguages": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-
-  /** ~~make sure both js and ts are validated~~ no longer needed as of vscode-eslint 2.0 */
-//   "eslint.validate": [
-//     "javascript",
-//     "javascriptreact",
-//     "typescript",
-//     "typescriptreact",
-//   ]
+	"prettier.disableLanguages": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
 }
 ```
 
-See also [the README of vscode-eslint](https://github.com/microsoft/vscode-eslint/blob/master/README.md).
+After attempting to lint your file for the first time, you may need to click on 'ESLint' in the bottom right and select 'Allow Everywhere' in the alert window.
+
+Finally you'll usually need to restart VS code. They say you don't need to, but it's never worked for me until I restart.
 
 ## With Create React App
 
-Run this:
+1. Run `npx install-peerdeps --dev eslint-config-kiprasmel`
+1. Crack open your `package.json` and replace `"extends": "react-app"` with `"extends": "kiprasmel"`
+
+## With Gatsby
+
+1. Run `npx install-peerdeps --dev eslint-config-kiprasmel`
+1. follow the `Local / Per Project Install` steps above
+
+## With WSL
+
+It should work as above.
+
+## With JetBrains Products (IntelliJ IDEA, WebStorm, RubyMine, PyCharm, PhpStorm, etc)
+
+If you have previously configured ESLint to run via a File Watcher, [turn that off.](https://www.jetbrains.com/help/idea/using-file-watchers.html#enableFileWatcher)
+
+### If you choose Local / Per Project Install Above
+
+1. Open ESLint configuration by going to File > Settings (Edit > Preferences on Mac) > Languages & Frameworks > Code Quality Tools > ESLint (optionally just search settings for "eslint")
+1. Select **Automatic ESLint Configuration**
+1. Check **Run eslint --fix on save**
+
+### If you choose Global Install
+
+The following steps are for a typical Node / ESLint global installtion. If you have a customized setup, refer to JetBrains docs for more [ESLint Configuration Options](https://www.jetbrains.com/help/webstorm/eslint.html#ws_js_eslint_manual_configuration).
+
+1. Open ESLint configuration by going to File > Settings (Edit > Preferences on Mac) > Languages & Frameworks > Code Quality Tools > ESLint (optionally just search settings for "eslint")
+1. Select **Manual ESLint configuration**
+1. Choose your **Node interpreter** from the detected installations
+1. Select the global **ESLint package** from the dropdown
+1. Leave Configuration File as **Automatic Search**
+1. Check **Run eslint --fix on save**
+
+### Ensure the Prettier plugin is disabled if installed.
+
+1. Open Prettier configuration by going to File > Settings (Edit > Preferences on Mac) > Languages & Frameworks > Code Quality Tools > Prettier (optionally just search settings for "prettier")
+1. Uncheck both **On code reformat** and **On save**
+1. _Optional BUT IMPORTANT:_ If you have the Prettier extension enabled for other languages like CSS and HTML, turn it off for JS since we are doing it through Eslint already.
+	 1. Make sure the **Run for files** glob does not include `js,ts,jsx,tsx`.
+	 2. An example glob for styles, config, and markdown. `{**/*,*}.{yml,css,sass,md}`
+
+## With TypeScript, Yarn, Pnpm
+
+Same instructions as above.
+
+## Issues with ESLint not formatting code
+
+If you experience issues with ESLint not formatting the code or you receive a `Parsing error: Cannot find module '@babel/preset-react` error message then you need to check that you opened the folder where you installed and configured ESLint directly in VS Code. The correct folder to open will be the one where you installed the `eslint-config-kiprasmel` npm package and where you created the `.eslintrc` file.
+
+Opening a parent folder or child folder in your code editor will cause ESLint to fail in finding the ESLint npm packages and the formatting won't work.
 
 ```sh
-npx install-peerdeps eslint-config-kiprasmel --dev --yarn
-
-sed 's/"react-app"/"eslint-config-kiprasmel"/g' package.json -i
-sed 's/"eslint": "5.x"/"eslint": "7.x"/g'    package.json -i
-
-yarn install
-
-# verify
-node node_modules/.bin/eslint --version
-
-# run
-eslint . --fix
-
-# run in typescript project
-eslint . --ext js,jsx,ts,tsx --fix
-
+your-username
+	|
+	projects
+		|
+		beginner-javascript # <- Open this folder directly in your code editor
+			.eslintrc
+			package.json
+			node_modules/
+			exercises/
+			playground/
 ```
-
-Your `package.json` should have this:
-
-```json
-{
-	"scripts": {
-		"lint": "    eslint . --ext js,jsx,ts,tsx",
-		"lint:fix": "eslint . --ext js,jsx,ts,tsx --fix"
-	},
-	"devDependencies": {
-		"eslint": "7.x"
-	},
-	"eslintConfig": {
-		"extends": [
-		  "eslint-config-kiprasmel"
-		],
-		"ignorePatterns": [
-		  "node_modules",
-		  "dist",
-		  "build"
-		],
-		"rules": {
-		  "no-console": 2,
-		  "prettier/prettier": [
-			"error",
-			{
-			  "trailingComma": "es5",
-			  "singleQuote": false,
-			  "printWidth": 120,
-			  "tabWidth": 4
-			}
-		  ]
-		}
-	}
-}
-```
-
-Example repo with commits as setting up steps: https://github.com/kiprasmel/cra-eslint-ts
-
-## 🤬🤬🤬🤬 IT'S NOT WORKING
-
-Start fresh. Sometimes global modules can goof you up. This will remove them all:
-
-```
-yarn global remove eslint-config-kiprasmel @typescript-eslint/parser @typescript-eslint/eslint-plugin typescript eslint eslint-config-prettier eslint-config-airbnb eslint-plugin-html eslint-plugin-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-react prettier eslint-plugin-react-hooks
-```
-
-To do the above for local, omit the `--global` flag.
-
-Then if you are using a local install, remove your `package-lock.json` / `yarn.lock` file and delete the `node_modules/` directory.
-
-```sh
-rm package-lock.json
-rm yarn.lock
-rm -rf node_modules
-```
-
-Then follow the above instructions again.
 
 ## License
 
-[MIT](./LICENSE) © 2019 [Kipras Melnikovas](https://github.com/kiprasmel)
+[MIT](./LICENSE)

@@ -8,14 +8,19 @@
 	"license": "MIT",
 	"private": false,
 	"scripts": {
-		"lint": "    eslint . --ext js,jsx,ts,tsx --ignore-pattern '!.eslintrc.js'",
+		"lint": "eslint . --ext js,jsx,ts,tsx --ignore-pattern '!.eslintrc.js'",
 		"lint:fix": "eslint . --ext js,jsx,ts,tsx --ignore-pattern '!.eslintrc.js' --fix",
 		"prepublishOnly": "yarn lint:fix",
-		"postpublish": "   yarn updateGlobal",
+		"postpublish": "yarn updateGlobal",
 		"printDeps": "node -p -e \"Object.entries(require('./package.json').dependencies).reduce((accumulator, [key, value]) => accumulator + ' ' + '\\\"' + key + '@' + value + '\\\"', '')\"",
-		"update": "      yarn        add $(yarn -s printDeps)",
+		"update": "yarn add $(yarn -s printDeps)",
 		"updateGlobal": "yarn global add $(yarn -s printDeps)",
 		"send-it": "yarn version --patch && npm whoami && npm publish"
+	},
+	"eslintConfig": {
+		"extends": [
+			"./.eslintrc.js"
+		]
 	},
 	"peerDependencies": {
 		"eslint": "^8.0.0",
@@ -23,6 +28,7 @@
 		"typescript": "^4.8.4 || ^5.0.0"
 	},
 	"dependencies": {
+		"@rushstack/eslint-patch": "1.10.4",
 		"@typescript-eslint/eslint-plugin": "6.21.0",
 		"@typescript-eslint/parser": "6.21.0",
 		"babel-eslint": "10.1.0",

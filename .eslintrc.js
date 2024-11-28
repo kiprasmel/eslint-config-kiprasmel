@@ -12,21 +12,22 @@
  *
  */
 
+// This is a patch so that eslint will load the plugins as dependencies. Otherwise we can to install EVERYTHING in th root project
+require("@rushstack/eslint-patch/modern-module-resolution");
+
 module.exports = {
 	extends: [
 		"airbnb",
 		"eslint:recommended",
-		"plugin:import/typescript" /** https://github.com/benmosher/eslint-plugin-import#typescript */,
+		"plugin:import/typescript",
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
-		// "plugin:@typescript-eslint/recommended-requiring-type-checking", /** broken atm */
 		"plugin:monorepo/recommended",
 		"prettier",
 	],
-	parser: "@typescript-eslint/parser" /** leggo typescript! */,
+	parser: "@typescript-eslint/parser", // babel-eslint
 	parserOptions: {
 		ecmaVersion: 2020,
-		// Can I remove these now?
 		ecmaFeatures: {
 			impliedStrict: true,
 			classes: true,
@@ -197,8 +198,6 @@ module.exports = {
 		"html",
 		"prettier",
 		"react-hooks",
-		"flowtype" /** CRA has this & I wanted it to work by default via global install */,
-		// "@typescript-eslint"
 		"@typescript-eslint/eslint-plugin",
 		"clean-regex" /** https://github.com/RunDevelopment/eslint-plugin-clean-regex */,
 	],
