@@ -79,6 +79,7 @@ module.exports = {
 		"prefer-template": 0,
 		"no-whitespace-before-property": 1,
 		"no-empty-pattern": 0,
+		"no-use-before-define": 0,
 
 		/** end disable meh stuff */
 
