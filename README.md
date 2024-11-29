@@ -154,6 +154,7 @@ Finally you'll usually need to restart VS code. They say you don't need to, but 
 
 1. Run `npx install-peerdeps --dev eslint-config-kiprasmel`
 1. Crack open your `package.json` and replace `"extends": "react-app"` with `"extends": "kiprasmel"`
+1. Add `DISABLE_ESLINT_PLUGIN=true` to the "start" script, see https://github.com/wesbos/eslint-config-wesbos/issues/140#issuecomment-2506880869
 
 ## With Gatsby
 
