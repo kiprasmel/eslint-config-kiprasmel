@@ -133,6 +133,7 @@ module.exports = {
 		"react/jsx-props-no-spreading": 0,
 		"react/jsx-no-target-blank": 0,
 		"react/button-has-type": 1,
+		"react/function-component-definition": 0,
 		"react/jsx-filename-extension": [
 			1,
 			{
@@ -192,6 +193,7 @@ module.exports = {
 				aspects: ["invalidHref"],
 			},
 		],
+		"jsx-a11y/no-noninteractive-element-interactions": 0,
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
 	},
