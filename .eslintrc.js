@@ -50,10 +50,11 @@ module.exports = {
 		"@typescript-eslint/ban-ts-comment": 1,
 		"@typescript-eslint/interface-name-prefix": 0 /** it's suggested in the typescript's own codebase, but not in general projects */,
 		"@typescript-eslint/camelcase": 0,
-		"@typescript-eslint/no-explicit-any": 1,
+		"@typescript-eslint/no-explicit-any": 0,
 		"@typescript-eslint/no-angle-bracket-type-assertion": 0, // is way more useful at times
 		"@typescript-eslint/no-var-requires": 0,
 		"@typescript-eslint/no-non-null-assertion": 0, // sometimes useful escape hatch
+		"@typescript-eslint/no-unused-vars": 2,
 
 		/** end typescript-specific */
 
@@ -63,7 +64,8 @@ module.exports = {
 
 		/** end flow-specific */
 
-		indent: ["error", "tab"] /** git good m8 */,
+		/** disabled because conflicts with prettier's indent. */
+		indent: [0, "tab"],
 
 		/** disable meh stuff */
 
@@ -80,13 +82,16 @@ module.exports = {
 		"no-whitespace-before-property": 1,
 		"no-empty-pattern": 0,
 		"no-use-before-define": 0,
+		"no-void": 0,
+		camelcase: 0,
 
 		/** end disable meh stuff */
 
 		"no-return-assign": ["error", "except-parens"],
 		"no-restricted-syntax": [2, "ForInStatement", "LabeledStatement", "WithStatement"],
+		// conflicts with @typescript-eslint/no-unused-vars
 		"no-unused-vars": [
-			1,
+			0,
 			{
 				ignoreRestSiblings: true,
 				argsIgnorePattern: "res|next|^err",
@@ -119,6 +124,7 @@ module.exports = {
 		"comma-dangle": 0,
 		"max-len": 0,
 		"import/extensions": 0,
+		"import/no-import-module-exports": 0,
 		"no-underscore-dangle": 0,
 		"consistent-return": 0,
 		"react/display-name": 1,
@@ -194,6 +200,8 @@ module.exports = {
 			},
 		],
 		"jsx-a11y/no-noninteractive-element-interactions": 0,
+		"jsx-a11y/no-static-element-interactions": 0,
+		"jsx-a11y/click-events-have-key-events": 0,
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
 	},
