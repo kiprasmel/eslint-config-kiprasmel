@@ -46,7 +46,6 @@ module.exports = {
 		"@typescript-eslint/consistent-type-assertions": 0 /** allow let a: T = <T>"something of type T" */,
 		"@typescript-eslint/no-empty-function": 1,
 		"@typescript-eslint/no-empty-interface": 1,
-		"@typescript-eslint/ban-types": 1,
 		"@typescript-eslint/ban-ts-comment": 1,
 		"@typescript-eslint/interface-name-prefix": 0 /** it's suggested in the typescript's own codebase, but not in general projects */,
 		"@typescript-eslint/camelcase": 0,
